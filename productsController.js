@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import productsModel from '../models/productsModel.js';
+import productsModel from './productsModel.js';
 import { object, string, number, array } from 'zod';
 export default {
   async getAllProducts(req, res) {
