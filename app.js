@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use('/products', productsRouter);
+app.use('/', productsRouter);
 
 // Start the server
 const port = 3000;
