@@ -6,7 +6,7 @@ const schema1 = object({
   price: number(),
   description: string(),
   categoryId: number(),
-  images: array(string().url()),
+  
 });
 const schema2 = object({
   title: string(),
@@ -21,6 +21,10 @@ export default {
   setProducts(data) {
     products = data;
   },
+  getProductById(id) {
+    const product = products.find((p) => p.id === id);
+    return product;
+  },
 
   addProduct(product) {
     products.push(product);
@@ -28,12 +32,14 @@ export default {
 
   async updateProduct(id, updatedFields) {
     try {
+      console.log('Updatingrouter:', id, updatedFields);
       // Fetch the updated product data from an external API or source
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products/`);
+      const response = await fetch(`https://fakestoreapi.com/products`);
       const products = await response.json();
 
       // const product = this.getProductById(id);
       const product = products.find((p) => p.id === id);
+      console.log("prodct in routerd:", product);
       if (!product) {
         return null;
       }
@@ -59,7 +65,7 @@ export default {
 
     try {
       // Fetch the updated product data from an external API or source
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products/`);
+      const response = await fetch(`https://fakestoreapi.com/products`);
       const products = await response.json();
       const product = products.find((p) => p.id === id);
       const index = products.findIndex((p) => p.id === id);
